@@ -101,8 +101,6 @@ const myStyles = StyleSheet.create({
         width: '100%'
     },
     textStyle: {
-      
-    //   top: 80,
       color: 'black',
       fontWeight: 'bold',
       fontFamily: 'Noteworthy-Bold',
