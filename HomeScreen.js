@@ -2,15 +2,22 @@ import React, { Component } from 'react';
 import { ScrollView, ImageBackground, Alert, StyleSheet, Text, View, FlatList, TouchableOpacity, Button } from 'react-native';
 import SplashScreen from './Splash_Screen'
 
+var myNavigate;
 
 export default class HomeScreen extends Component {
+
+    static navigationOptions = {
+        fontSize: 50,
+        title: 'MyApp Store',
+      };
 
     constructor(props) {
         super(props);
         this.state={
             scroolEnabled: true,
             isLoading: true,
-            dataSource:[]
+            imageField: '',
+
         }
     }
 
@@ -23,39 +30,51 @@ export default class HomeScreen extends Component {
 
                 });            
         }).catch((error)=>{
-            Alert.alert('Error : ',error);
+            Alert.alert('Not able to Connet to Server');
         });
-
     }
 
+    TOPressed=(myTitle, sectionIcon)=>{
+        
+        myNavigate('CatagoryScreen', {
+            catagoryTitle: myTitle,
+            catagoryIcon: sectionIcon,
+            
+        })
+    };
+
     render() {
+  
         if(this.state.isLoading) {
             return(
                 <SplashScreen/>
             );
         }
 
+        const {navigate} = this.props.navigation;
+        myNavigate = navigate;
         return(
             
-                <View style={myStyles.mainContainer}>
-                    <FlatList scrollEnabled={this.state.scroolEnabled}
-                        style={myStyles.flatListStyle} data={this.state.dataSource} 
-                             horizontal={false}
-                             renderItem={({item})=>
-                                <TouchableOpacity style={myStyles.TOStyle}>
-                                    <View style={myStyles.cellView}>
-                                        <ImageBackground 
-                                            source={{uri: item.icon}}
-                                            style={myStyles.imageBackground}>
-                                         <Text style={myStyles.textStyle}>
+    <View style={myStyles.mainContainer}>
+        <FlatList scrollEnabled={this.state.scroolEnabled}
+                  style={myStyles.flatListStyle} data={this.state.dataSource} 
+                  horizontal={false}
+                  renderItem={({item})=>
+                    <TouchableOpacity 
+                        onPress={() =>this.TOPressed(item.title,item.icon) }
+                        style={myStyles.TOStyle}>
+                        <View style={myStyles.cellView}>
+                            <ImageBackground 
+                                source={{uri: item.icon}}
+                                style={myStyles.imageBackground}>
+                                <Text style={myStyles.textStyle}>
                                              {item.title}    
-                                         </Text> 
-                                        </ImageBackground> 
-                                  </View>  
-                                </TouchableOpacity>   
+                                </Text> 
+                            </ImageBackground> 
+                        </View>  
+                    </TouchableOpacity>   
                              } 
                                 keyExtractor={({id}, index)=> id
-                            
                             }
                         />
                 </View>
@@ -65,25 +84,25 @@ export default class HomeScreen extends Component {
 
 const myStyles = StyleSheet.create({
     mainContainer: {
-        flex: 1,
+        height: '100%',
+        width: '100%',
         backgroundColor: 'yellowgreen',
         justifyContent: 'space-around',
         alignItems: 'center'
     },
     TOStyle: {
+        width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        alignSelf: 'center', 
-        borderColor: 'red',
-             
+        alignSelf: 'center',        
     },
     flatListStyle: {
-        flex: 1,
-        
+        height: '100%',
+        width: '100%'
     },
     textStyle: {
-      flex: 1,
-      top: 80,
+      
+    //   top: 80,
       color: 'black',
       fontWeight: 'bold',
       fontFamily: 'Noteworthy-Bold',
@@ -92,10 +111,9 @@ const myStyles = StyleSheet.create({
       alignItems: 'center',
     },
     cellView: {
-        top: 30,
-        flex: 1,
-        height: 50, 
-        width: 380,
+        
+        height: 266, 
+        width: 375,
         justifyContent: 'center',
         alignItems: 'center'
         

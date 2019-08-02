@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 import HomeScreen from './HomeScreen';
-import SplashScreen from './Splash_Screen';
+import CatagoryScreen from './CatagoryScreen';
 
-export default class GoToHomeScreen extends Component {
-  render() {
-    return(
-      <HomeScreen/>
-    );
-  }
-}
+const App = createStackNavigator({
+  HomeScreen: { screen: HomeScreen }, 
+  CatagoryScreen: { screen: CatagoryScreen }}, {
+    initialRouteName: 'HomeScreen'
+  } 
+);
+
+export default createAppContainer(App)

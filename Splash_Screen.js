@@ -33,5 +33,4 @@ const myStyle = StyleSheet.create({
         fontFamily: 'Noteworthy-Bold',
         fontWeight: 'bold'
     }
-
 })
