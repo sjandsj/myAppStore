@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { ScrollView, ImageBackground, Alert, StyleSheet, Text, View, FlatList, TouchableOpacity, Button } from 'react-native';
 import SplashScreen from './Splash_Screen'
 
-
 var myNavigate;
 
 export default class HomeScreen extends Component {
@@ -25,11 +24,9 @@ export default class HomeScreen extends Component {
         return fetch('https://gist.githubusercontent.com/aashapure/7af28cbab39507f9a53b81de2a3e31fb/raw/169bec90b66bd7dbe706ecdee79c5df916453fb1/gistfile1.txt')
         .then((response)=>response.json()).then((responseJson)=>{
 
-
             this.setState({
                 isLoading: false, 
                 dataSource: responseJson.catalogue }, function(){
-
                 });            
         }).catch((error)=>{
             Alert.alert('Not able to Connet to Server');
@@ -37,7 +34,6 @@ export default class HomeScreen extends Component {
     }
 
     TOPressed=(myTitle, sectionIcon, id)=>{
-        
         myNavigate('CatagoryScreen', {
             catagoryTitle: myTitle,
             catagoryIcon: sectionIcon,

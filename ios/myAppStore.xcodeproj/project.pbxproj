@@ -12,10 +12,10 @@
 		04C20191443968AE68F5461C /* libPods-myAppStore-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C0143B787345CE9188790A8 /* libPods-myAppStore-tvOS.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
-		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		13B07FBF1A68108700A75B9A /* ic_launcher.png in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* ic_launcher.png */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
-		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		2D02E4BD1E0B4A84006451C7 /* ic_launcher.png in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* ic_launcher.png */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2D3B0054C833EF95332630E4 /* libPods-myAppStore-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E37D81BB476A056C7AE0E3 /* libPods-myAppStore-tvOSTests.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* myAppStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* myAppStoreTests.m */; };
@@ -49,7 +49,7 @@
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = myAppStore/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = myAppStore/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = myAppStore/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_launcher.png; path = myAppStore/Images.xcassets/ic_launcher.imageset/ic_launcher.png; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = myAppStore/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = myAppStore/main.m; sourceTree = "<group>"; };
 		15F9D6362F06A95F75899085 /* Pods-myAppStoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myAppStoreTests.debug.xcconfig"; path = "Target Support Files/Pods-myAppStoreTests/Pods-myAppStoreTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
-				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				13B07FB51A68108700A75B9A /* ic_launcher.png */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
@@ -194,7 +194,6 @@
 				15F9D6362F06A95F75899085 /* Pods-myAppStoreTests.debug.xcconfig */,
 				0E689221D462D8ABA04476D0 /* Pods-myAppStoreTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -308,6 +307,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -336,7 +336,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				13B07FBF1A68108700A75B9A /* ic_launcher.png in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,7 +345,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */,
+				2D02E4BD1E0B4A84006451C7 /* ic_launcher.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
