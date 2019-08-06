@@ -22,16 +22,18 @@ const myStyles = StyleSheet.create({
         width: '100%',
         height: '100%',
         backgroundColor: 'yellow',
-        justifyContent: 'space-evenly',
+        justifyContent: 'space-between',
         alignItems: 'center'
     },
     headerStyle: {
-        fontSize: 80,
+        top: 20,
+        fontSize: 70,
         color: 'dodgerblue',
         fontWeight: 'bold',
         fontFamily: 'RockWell'
     },
     textStyle: {
+        padding: 15,
         fontFamily: 'Times New Roman',
         fontSize: 20,
         color: 'orangered'

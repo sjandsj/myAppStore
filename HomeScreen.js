@@ -23,7 +23,6 @@ export default class HomeScreen extends Component {
     componentDidMount(){
         return fetch('https://gist.githubusercontent.com/aashapure/7af28cbab39507f9a53b81de2a3e31fb/raw/169bec90b66bd7dbe706ecdee79c5df916453fb1/gistfile1.txt')
         .then((response)=>response.json()).then((responseJson)=>{
-
             this.setState({
                 isLoading: false, 
                 dataSource: responseJson.catalogue }, function(){
@@ -42,17 +41,14 @@ export default class HomeScreen extends Component {
     };
 
     render() {
-  
         if(this.state.isLoading) {
             return(
                 <SplashScreen/>
             );
         }
-
         const {navigate} = this.props.navigation;
         myNavigate = navigate;
-        return(
-            
+        return( 
     <View style={myStyles.mainContainer}>
         <FlatList scrollEnabled={this.state.scroolEnabled}
                   style={myStyles.flatListStyle} data={this.state.dataSource} 
@@ -111,7 +107,6 @@ const myStyles = StyleSheet.create({
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center'
-        
     },
     imageBackground: {
         width: '100%',

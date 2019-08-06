@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, FlatList, Alert, TouchableOpacity } from 'react-native';
 import LoadingScreen from './LoadingScreen';
-import SummaryScreen from './SummaryScreen';
+
 
 var myNavigate;
 
@@ -9,7 +9,6 @@ export default class CatagoryScreen extends Component {
 
     constructor(props) {
         super(props);
-        
         this.state = {
             isLoading: true,
             myId: this.props.navigation.state.params.catagoryId,
@@ -18,19 +17,14 @@ export default class CatagoryScreen extends Component {
     }
 
     componentDidMount() {
-       
         return fetch('https://gist.githubusercontent.com/aashapure/d53fd904bd3ad4abd9250aea4aaff767/raw/0811673cde1fedee2cac67fdbb732386a2d22e9b/gistfile1.txt')
             .then((response)=> response.json())
             .then((responseJson)=> {
-    
              let data = responseJson[this.state.myId];
-               
                 this.setState({
                     isLoading: false,
-                    listData: data,
-                    
-                }, function(){
-                   
+                    listData: data,   
+                }, function(){     
                 });
             }).catch((error)=>{
                 Alert.alert(error)
@@ -50,18 +44,14 @@ export default class CatagoryScreen extends Component {
     };
 
     render() {
-
         if(this.state.isLoading){
             return(
                 <LoadingScreen/>
             )
         }
-
         const { navigate } = this.props.navigation;
         myNavigate = navigate;
-        
-        return(
-            
+        return(    
         <View style={myStyles.mainContainer}>
             <Text style={myStyles.headerStyle}>
                 {this.props.navigation.state.params.catagoryTitle}
