@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, ScroolView } from 'react-native';
 
 export default class SummaryScreen extends Component {
     render(){
         const {navigate} = this.props.navigation;
         return(
+            
             <View style={myStyles.mainContainer}>
                 <Text style={myStyles.headerStyle}>
                     {this.props.navigation.state.params.summaryTitle}
@@ -22,10 +23,11 @@ const myStyles = StyleSheet.create({
         width: '100%',
         height: '100%',
         backgroundColor: 'yellow',
-        justifyContent: 'space-between',
+        justifyContent: 'space-evenly',
         alignItems: 'center'
     },
     headerStyle: {
+        paddingTop: 40,
         top: 20,
         fontSize: 70,
         color: 'dodgerblue',
@@ -35,7 +37,7 @@ const myStyles = StyleSheet.create({
     textStyle: {
         padding: 15,
         fontFamily: 'Times New Roman',
-        fontSize: 20,
+        fontSize: 25,
         color: 'orangered'
     }
 })
