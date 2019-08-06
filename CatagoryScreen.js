@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, FlatList, Alert, TouchableOpacity } from 'react-native';
-import LoadingScreen from './LoadingScreen'
-
+import LoadingScreen from './LoadingScreen';
+import SummaryScreen from './SummaryScreen';
 
 var myNavigate;
-var myGlobalId;
 
 export default class CatagoryScreen extends Component {
 
@@ -13,9 +12,9 @@ export default class CatagoryScreen extends Component {
         
         this.state = {
             isLoading: true,
-            myId: this.props.navigation.state.params.catagoryId
+            myId: this.props.navigation.state.params.catagoryId,
+            listData: [],
         };
-       
     }
 
     componentDidMount() {
@@ -23,24 +22,32 @@ export default class CatagoryScreen extends Component {
         return fetch('https://gist.githubusercontent.com/aashapure/d53fd904bd3ad4abd9250aea4aaff767/raw/0811673cde1fedee2cac67fdbb732386a2d22e9b/gistfile1.txt')
             .then((response)=> response.json())
             .then((responseJson)=> {
-
+    
+             let data = responseJson[this.state.myId];
+               
                 this.setState({
                     isLoading: false,
-                    datasource: responseJson.myGlobalId
+                    listData: data,
+                    
                 }, function(){
-                    
-                    console.log('function',responseJson)
-                }, () => this.setState({
-                    
-                }));
+                   
+                });
             }).catch((error)=>{
                 Alert.alert(error)
             });
     }
-
+    
     static navigationOptions = {
         title: 'Select An App'
     }
+
+    TOPressed=(appTitle, appSummary, id)=>{
+        myNavigate('SummaryScreen',{
+            summaryTitle: appTitle,
+            summary: appSummary,
+            appID: id
+        })
+    };
 
     render() {
 
@@ -52,7 +59,7 @@ export default class CatagoryScreen extends Component {
 
         const { navigate } = this.props.navigation;
         myNavigate = navigate;
-        console.log('kkkkk')
+        
         return(
             
         <View style={myStyles.mainContainer}>
@@ -61,10 +68,14 @@ export default class CatagoryScreen extends Component {
             </Text>
             <Image style = {{width:150, height: 150}}
                 source={{uri: this.props.navigation.state.params.catagoryIcon}}/>
-            <FlatList data={this.state.datasource} 
+            <FlatList style={myStyles.flatListStyle}
+                data={this.state.listData} 
                 renderItem={({item})=>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={ () =>this.TOPressed(item.title, item.summary, item.id)}
+                    style={{ width: '100%' }}>
                   <View style={myStyles.subView}>
+                    <Image style={myStyles.iconParams}
+                        source={{uri: item.icon}}/>  
                     <Text style={myStyles.listStyle}>
                         {item.title}
                     </Text>
@@ -78,10 +89,11 @@ export default class CatagoryScreen extends Component {
 
 const myStyles = StyleSheet.create({
     mainContainer: {
-        flex: 1, 
-        justifyContent: 'space-evenly',
+        height: '100%',
+        width: '100%', 
+        justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: 'dodgerblue'
+        backgroundColor: 'chartreuse'
     },
     headerStyle: {
         fontSize: 40,
@@ -90,12 +102,25 @@ const myStyles = StyleSheet.create({
         fontFamily: 'Menlo-Bold'
     },
     listStyle: {
-        fontSize: 30,
-        color: 'crimson',
-        fontWeight: 'bold'
-    },
-    subView: {
+        height: '100%',
+        width: '100%',
+        fontSize: 40,
+        color: 'chocolate',
+        fontWeight: 'bold',
         justifyContent: 'space-evenly',
         alignItems: 'center'
+    },
+    subView: {
+        height: 100,
+        width: '100%',
+        flexDirection: 'row',    
+        justifyContent: 'flex-start',
+    },
+    iconParams: {
+        height: 50,
+        width: 50
+    },flatListStyle: {
+        height: '100%',
+        width: '100%'
     }
 })

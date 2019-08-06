@@ -1,0 +1,39 @@
+import React, { Component } from 'react';
+import { Text, View, StyleSheet } from 'react-native';
+
+export default class SummaryScreen extends Component {
+    render(){
+        const {navigate} = this.props.navigation;
+        return(
+            <View style={myStyles.mainContainer}>
+                <Text style={myStyles.headerStyle}>
+                    {this.props.navigation.state.params.summaryTitle}
+                </Text>
+                <Text style={myStyles.textStyle}>
+                    {this.props.navigation.state.params.summary}
+                </Text>
+            </View>
+        );
+    }
+}
+
+const myStyles = StyleSheet.create({
+    mainContainer: {
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'yellow',
+        justifyContent: 'space-evenly',
+        alignItems: 'center'
+    },
+    headerStyle: {
+        fontSize: 80,
+        color: 'dodgerblue',
+        fontWeight: 'bold',
+        fontFamily: 'RockWell'
+    },
+    textStyle: {
+        fontFamily: 'Times New Roman',
+        fontSize: 20,
+        color: 'orangered'
+    }
+})
