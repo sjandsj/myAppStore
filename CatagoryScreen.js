@@ -2,29 +2,39 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, FlatList, Alert, TouchableOpacity } from 'react-native';
 import LoadingScreen from './LoadingScreen'
 
+
 var myNavigate;
+var myGlobalId;
 
 export default class CatagoryScreen extends Component {
 
     constructor(props) {
         super(props);
+        
         this.state = {
-            isLoading: true
+            isLoading: true,
+            myId: this.props.navigation.state.params.catagoryId
         };
+       
     }
 
     componentDidMount() {
-        return fetch('https://facebook.github.io/react-native/movies.json')
+       
+        return fetch('https://gist.githubusercontent.com/aashapure/d53fd904bd3ad4abd9250aea4aaff767/raw/0811673cde1fedee2cac67fdbb732386a2d22e9b/gistfile1.txt')
             .then((response)=> response.json())
             .then((responseJson)=> {
+
                 this.setState({
                     isLoading: false,
-                    datasource: responseJson.movies
+                    datasource: responseJson.myGlobalId
                 }, function(){
-
-                });
+                    
+                    console.log('function',responseJson)
+                }, () => this.setState({
+                    
+                }));
             }).catch((error)=>{
-                Alert.alert('Not able to Connet to Server')
+                Alert.alert(error)
             });
     }
 
@@ -42,9 +52,9 @@ export default class CatagoryScreen extends Component {
 
         const { navigate } = this.props.navigation;
         myNavigate = navigate;
-        
+        console.log('kkkkk')
         return(
-
+            
         <View style={myStyles.mainContainer}>
             <Text style={myStyles.headerStyle}>
                 {this.props.navigation.state.params.catagoryTitle}

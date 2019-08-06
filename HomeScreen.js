@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { ScrollView, ImageBackground, Alert, StyleSheet, Text, View, FlatList, TouchableOpacity, Button } from 'react-native';
 import SplashScreen from './Splash_Screen'
 
+
 var myNavigate;
 
 export default class HomeScreen extends Component {
@@ -17,7 +18,6 @@ export default class HomeScreen extends Component {
             scroolEnabled: true,
             isLoading: true,
             imageField: '',
-
         }
     }
 
@@ -34,12 +34,12 @@ export default class HomeScreen extends Component {
         });
     }
 
-    TOPressed=(myTitle, sectionIcon)=>{
+    TOPressed=(myTitle, sectionIcon, id)=>{
         
         myNavigate('CatagoryScreen', {
             catagoryTitle: myTitle,
             catagoryIcon: sectionIcon,
-            
+            catagoryId: id
         })
     };
 
@@ -61,7 +61,7 @@ export default class HomeScreen extends Component {
                   horizontal={false}
                   renderItem={({item})=>
                     <TouchableOpacity 
-                        onPress={() =>this.TOPressed(item.title,item.icon) }
+                        onPress={() =>this.TOPressed(item.title, item.icon, item.id) }
                         style={myStyles.TOStyle}>
                         <View style={myStyles.cellView}>
                             <ImageBackground 
