@@ -8,7 +8,7 @@ import {
   Alert,
   TouchableOpacity,
 } from "react-native";
-import LoadingScreen from "./LoadingScreen";
+import LoadingScreen from "../Splash_Loading_Screen/LoadingScreen";
 
 var myNavigate;
 

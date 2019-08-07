@@ -1,14 +1,8 @@
 import React, { Component } from "react";
-import {
-  ImageBackground,
-  Alert,
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  TouchableOpacity
-} from "react-native";
-import SplashScreen from "./Splash_Screen";;
+import { Alert, StyleSheet, View } from "react-native";
+import SplashScreen from "../Splash_Loading_Screen/Splash_Screen";
+import { MyList } from "./MyHomeScreen";
+import { MyButton } from "./MyButton"
 
 var myNavigate;
 
@@ -45,6 +39,14 @@ export default class HomeScreen extends Component {
         Alert.alert("Not able to Connet to Server");
       });
   }
+  myRenderItem = ({ item }) => (
+    <MyButton
+      onPress={() => this.TOPressed(item.title, item.icon, item.id)}
+      source={{ uri: item.icon }}
+    >
+      {item.title}
+    </MyButton>
+  );
 
   TOPressed = (myTitle, sectionIcon, id) => {
     myNavigate("CatagoryScreen", {
@@ -62,27 +64,10 @@ export default class HomeScreen extends Component {
     myNavigate = navigate;
     return (
       <View style={myStyles.mainContainer}>
-        <FlatList
+        <MyList
           scrollEnabled={this.state.scroolEnabled}
-          style={myStyles.flatListStyle}
           data={this.state.dataSource}
-          horizontal={false}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              onPress={() => this.TOPressed(item.title, item.icon, item.id)}
-              style={myStyles.TOStyle}
-            >
-              <View style={myStyles.cellView}>
-                <ImageBackground
-                  source={{ uri: item.icon }}
-                  style={myStyles.imageBackground}
-                >
-                  <Text style={myStyles.textStyle}>{item.title}</Text>
-                </ImageBackground>
-              </View>
-            </TouchableOpacity>
-          )}
-          keyExtractor={({ id }, index) => id}
+          renderItem={data => this.myRenderItem(data)}
         />
       </View>
     );
@@ -96,35 +81,5 @@ const myStyles = StyleSheet.create({
     backgroundColor: "yellowgreen",
     justifyContent: "space-around",
     alignItems: "center"
-  },
-  TOStyle: {
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-    alignSelf: "center"
-  },
-  flatListStyle: {
-    height: "100%",
-    width: "100%",
-  },
-  textStyle: {
-    color: "black",
-    fontWeight: "bold",
-    fontFamily: "Noteworthy-Bold",
-    fontSize: 40,
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  cellView: {
-    height: 266,
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  imageBackground: {
-    width: "100%",
-    height: "100%",
-    justifyContent: "center",
-    alignItems: 'center'
   }
 });

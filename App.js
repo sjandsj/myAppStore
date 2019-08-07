@@ -1,8 +1,7 @@
-import React, { Component } from "react";
 import { createStackNavigator, createAppContainer } from "react-navigation";
-import HomeScreen from "./HomeScreen";
-import CatagoryScreen from "./CatagoryScreen";
-import SummaryScreen from "./SummaryScreen";
+import HomeScreen from "./HomeScreen/index";
+import CatagoryScreen from "./CatagoryScreen/index";
+import SummaryScreen from "./SummaryScreen/index";
 
 const App = createStackNavigator(
   {
