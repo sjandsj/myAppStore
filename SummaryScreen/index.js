@@ -1,42 +1,13 @@
 import React, { Component } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { SummaryScreenContainer } from "./Components/SummaryScreenContainer";
 
 export default class SummaryScreen extends Component {
   render() {
-    const { navigate } = this.props.navigation;
     return (
-      <View style={myStyles.mainContainer}>
-        <Text style={myStyles.headerStyle}>
-          {this.props.navigation.state.params.summaryTitle}
-        </Text>
-        <Text style={myStyles.textStyle}>
-          {this.props.navigation.state.params.summary}
-        </Text>
-      </View>
+      <SummaryScreenContainer>
+        {this.props.navigation.state.params.summaryTitle},
+        {this.props.navigation.state.params.summary}
+      </SummaryScreenContainer>
     );
   }
 }
-
-const myStyles = StyleSheet.create({
-  mainContainer: {
-    width: "100%",
-    height: "100%",
-    backgroundColor: "yellow",
-    justifyContent: "space-evenly",
-    alignItems: "center"
-  },
-  headerStyle: {
-    paddingTop: 40,
-    top: 20,
-    fontSize: 70,
-    color: "dodgerblue",
-    fontWeight: "bold",
-    fontFamily: "RockWell"
-  },
-  textStyle: {
-    padding: 15,
-    fontFamily: "Times New Roman",
-    fontSize: 25,
-    color: "orangered"
-  }
-});

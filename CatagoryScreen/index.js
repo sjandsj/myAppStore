@@ -1,15 +1,7 @@
 import React, { Component } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  FlatList,
-  Alert,
-  TouchableOpacity
-} from "react-native";
+import { Alert } from "react-native";
 import LoadingScreen from "../Splash_Loading_Screen/LoadingScreen";
-
+import { CatagoryScreenContainer } from "./Components/CatagoryScreenContainer";
 
 var myNavigate;
 
@@ -35,9 +27,7 @@ export default class CatagoryScreen extends Component {
             isLoading: false,
             listData: data
           },
-          function() {
-            console.log('data',data)
-          }
+          function() {}
         );
       })
       .catch(error => {
@@ -49,11 +39,11 @@ export default class CatagoryScreen extends Component {
     title: "Select An App"
   };
 
-  toPressed = (appTitle, appSummary, id) => {
+  toPressed = data => {
     myNavigate("SummaryScreen", {
-      summaryTitle: appTitle,
-      summary: appSummary,
-      appID: id
+      summaryTitle: data.title,
+      summary: data.summary,
+      appID: data.id
     });
   };
 
@@ -64,73 +54,13 @@ export default class CatagoryScreen extends Component {
     const { navigate } = this.props.navigation;
     myNavigate = navigate;
     return (
-      <View style={myStyles.mainContainer}>
-        <Text style={myStyles.headerStyle}>
-          {this.props.navigation.state.params.catagoryTitle}
-        </Text>
-        <Image
-          style={{ width: 150, height: 150 }}
-          source={{ uri: this.props.navigation.state.params.catagoryIcon }}
-        />
-        <FlatList
-          style={myStyles.flatListStyle}
-          data={this.state.listData}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              onPress={() => this.toPressed(item.title, item.summary, item.id)}
-              style={{ width: "100%" }}
-            >
-              <View style={myStyles.subView}>
-                <Image
-                  style={myStyles.iconParams}
-                  source={{ uri: item.icon }}
-                />
-                <Text style={myStyles.listStyle}>{item.title}</Text>
-              </View>
-            </TouchableOpacity>
-          )}
-          keyExtractor={({ id }, index) => id}
-        />
-      </View>
+      <CatagoryScreenContainer
+        source={{ uri: this.props.navigation.state.params.catagoryIcon }}
+        data={this.state.listData}
+        onPress={data => this.toPressed(data)}
+      >
+        {this.props.navigation.state.params.catagoryTitle}
+      </CatagoryScreenContainer>
     );
   }
 }
-
-const myStyles = StyleSheet.create({
-  mainContainer: {
-    height: "100%",
-    width: "100%",
-    justifyContent: "space-between",
-    alignItems: "center",
-    backgroundColor: 'chartreuse',
-  },
-  headerStyle: {
-    fontSize: 40,
-    fontWeight: "bold",
-    color: "black",
-    fontFamily: "Menlo-Bold",
-  },
-  listStyle: {
-    height: "100%",
-    width: "100%",
-    fontSize: 40,
-    color: "chocolate",
-    fontWeight: "bold",
-    justifyContent: "space-evenly",
-    alignItems: "center",
-  },
-  subView: {
-    height: 100,
-    width: "100%",
-    flexDirection: "row",
-    justifyContent: "flex-start"
-  },
-  iconParams: {
-    height: 50,
-    width: 50
-  },
-  flatListStyle: {
-    height: "100%",
-    width: "100%"
-  }
-});

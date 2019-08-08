@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Alert, StyleSheet, View } from "react-native";
+import { Alert } from "react-native";
 import SplashScreen from "../Splash_Loading_Screen/Splash_Screen";
-import { MyList } from "./Components/Container";
+import { MyList } from "./Components/HomeScreenContainer";
 
 var myNavigate;
 
@@ -54,23 +54,11 @@ export default class HomeScreen extends Component {
     const { navigate } = this.props.navigation;
     myNavigate = navigate;
     return (
-      <View style={myStyles.mainContainer}>
-        <MyList
-          scrollEnabled={this.state.scroolEnabled}
-          data={this.state.dataSource}
-          methodClick={data => this.TOPressed(data)}
-        />
-      </View>
+      <MyList
+        scrollEnabled={this.state.scroolEnabled}
+        data={this.state.dataSource}
+        methodClick={data => this.TOPressed(data)}
+      />
     );
   }
 }
-
-const myStyles = StyleSheet.create({
-  mainContainer: {
-    height: "100%",
-    width: "100%",
-    backgroundColor: "yellowgreen",
-    justifyContent: "space-around",
-    alignItems: "center"
-  }
-});
