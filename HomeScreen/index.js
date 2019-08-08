@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Alert, StyleSheet, View } from "react-native";
 import SplashScreen from "../Splash_Loading_Screen/Splash_Screen";
-import { MyList } from "./MyHomeScreen";
-import { MyButton } from "./MyButton"
+import { MyList } from "./Components/Container";
 
 var myNavigate;
 
@@ -39,20 +38,12 @@ export default class HomeScreen extends Component {
         Alert.alert("Not able to Connet to Server");
       });
   }
-  myRenderItem = ({ item }) => (
-    <MyButton
-      onPress={() => this.TOPressed(item.title, item.icon, item.id)}
-      source={{ uri: item.icon }}
-    >
-      {item.title}
-    </MyButton>
-  );
 
-  TOPressed = (myTitle, sectionIcon, id) => {
+  TOPressed = data => {
     myNavigate("CatagoryScreen", {
-      catagoryTitle: myTitle,
-      catagoryIcon: sectionIcon,
-      catagoryId: id
+      catagoryTitle: data.title,
+      catagoryIcon: data.icon,
+      catagoryId: data.id
     });
   };
 
@@ -67,7 +58,7 @@ export default class HomeScreen extends Component {
         <MyList
           scrollEnabled={this.state.scroolEnabled}
           data={this.state.dataSource}
-          renderItem={data => this.myRenderItem(data)}
+          methodClick={data => this.TOPressed(data)}
         />
       </View>
     );

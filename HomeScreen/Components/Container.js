@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { FlatList, StyleSheet } from "react-native";
+import { MyButton } from "./MyButton";
 
 const MyList = props => {
   return (
@@ -8,7 +9,14 @@ const MyList = props => {
       style={myStyles.flatListStyle}
       data={props.data}
       renderItem={props.renderItem}
-      keyExtractor={props.keyExtractor}
+      keyExtractor={(item, index) => item.id}
+      renderItem={({ item }) => ( 
+        <MyButton 
+         onPress={() => props.methodClick(item)}
+         source={{ uri: item.icon }}>
+          {item.title}
+        </MyButton>
+      )}
     />
   );
 };
@@ -19,5 +27,4 @@ const myStyles = StyleSheet.create({
     width: "100%"
   }
 });
-
 export { MyList };

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   StyleSheet,
   Text,
@@ -6,9 +6,10 @@ import {
   Image,
   FlatList,
   Alert,
-  TouchableOpacity,
+  TouchableOpacity
 } from "react-native";
 import LoadingScreen from "../Splash_Loading_Screen/LoadingScreen";
+
 
 var myNavigate;
 
@@ -18,7 +19,7 @@ export default class CatagoryScreen extends Component {
     this.state = {
       isLoading: true,
       myId: this.props.navigation.state.params.catagoryId,
-      listData: [],
+      listData: []
     };
   }
 
@@ -34,7 +35,9 @@ export default class CatagoryScreen extends Component {
             isLoading: false,
             listData: data
           },
-          function() {}
+          function() {
+            console.log('data',data)
+          }
         );
       })
       .catch(error => {
