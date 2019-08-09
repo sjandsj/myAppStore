@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { View, FlatList, StyleSheet } from "react-native";
 import { MyButton } from "./HomeScreenButton";
 

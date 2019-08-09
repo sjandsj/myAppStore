@@ -4,8 +4,8 @@ import { Text, View, StyleSheet } from "react-native";
 const SummaryScreenContainer = props => {
   return (
     <View style={myStyles.mainContainer}>
-      <Text style={myStyles.headerStyle}>{props.children}</Text>
-      <Text style={myStyles.textStyle}>{props.children}</Text>
+      <Text style={myStyles.headerStyle}>{props.summaryTitle}</Text>
+      <Text style={myStyles.textStyle}>{props.summary}</Text>
     </View>
   );
 };
